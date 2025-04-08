@@ -1,0 +1,15 @@
+/* navbar.component.css */
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-link.active {
+    border-bottom: 2px solid #f1f1f1;
+  }
+  
+  .btn {
+    font-size: 1rem;
+  }
+  

@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+/* Import Bootstrap (optional if not using angular.json) */
+/* @import "~bootstrap/dist/css/bootstrap.min.css"; */
+
+/* Global Reset and Smooth Scroll */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #b09aff, #e9c4fa);
+    background-image: radial-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/BAK.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure container doesn't overflow on small screens */
+  .container, .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Responsive Image Handling */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Responsive Typography (Optional) */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+  }
+  
+  /* Optional: Add a subtle overlay for content readability */
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  
