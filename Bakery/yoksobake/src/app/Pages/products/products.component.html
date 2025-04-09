@@ -1,1 +1,21 @@
-<p>products works!</p>
+<div class="product-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]=" 'assets/'+product.imageUrl" alt="{{ product.pname }}" class="product-image" />
+  
+      <h3>{{ product.pname }}</h3>
+      <p><strong>Category:</strong> {{ product.pcategory }}</p>
+      <p>{{ product.pdesc }}</p>
+      <p><strong>Price:</strong> ₹{{ product.pprice }}</p>
+  
+      <div class="quantity-section">
+        <button (click)="decrement(product)">−</button>
+        <span class="quantity-display">{{ product.quantity }}</span>
+        <button (click)="increment(product)">+</button>
+      </div>
+  
+      <button (click)="addToCart(product)" class="btn btn-success">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+  

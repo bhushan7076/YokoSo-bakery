@@ -1,0 +1,86 @@
+.cart-container {
+  padding: 30px;
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #f8f8f8;
+  color: #444;
+  font-weight: 600;
+  padding: 12px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+tr:hover {
+  background-color: #fafafa;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cart-footer {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 28px;
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f50057;
+  box-shadow: 0 4px 12px rgba(245, 0, 87, 0.2);
+}
+
+@media (max-width: 600px) {
+  .cart-container {
+    padding: 15px;
+  }
+
+  table, th, td {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .cart-footer {
+    text-align: center;
+  }
+}

@@ -3,6 +3,7 @@
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
+    position:sticky;
   }
   
   .nav-link.active {

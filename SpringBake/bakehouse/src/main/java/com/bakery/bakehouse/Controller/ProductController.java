@@ -1,6 +1,8 @@
 package com.bakery.bakehouse.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,9 @@ import com.bakery.bakehouse.Repo.CustomerRepo;
 import com.bakery.bakehouse.Repo.ProductRepo;
 import com.bakery.bakehouse.dto.CartRequestDTO;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/customer")
 public class ProductController {
 
     @Autowired
@@ -36,30 +39,35 @@ public class ProductController {
     }
     
     @PostMapping("/addToCart")
-    public ResponseEntity<String> addToCart(@RequestBody CartRequestDTO cartRequestDTO) {
+    public ResponseEntity<Map<String, String>> addToCart(@RequestBody CartRequestDTO cartRequestDTO) {
         Integer custId = cartRequestDTO.getCustId();
         Integer productId = cartRequestDTO.getProductId();
         int quantity = cartRequestDTO.getQuantity();
 
         if (custId == null) {
-            return ResponseEntity.badRequest().body("Customer ID must not be null");
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Customer ID must not be null");
+            return ResponseEntity.badRequest().body(errorResponse);
         }
 
         Optional<Customer> customer = customerRepo.findById(custId);
         if (customer.isEmpty()) {
-            return ResponseEntity.badRequest().body("Customer not found");
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Customer not found");
+            return ResponseEntity.badRequest().body(errorResponse);
         }
 
         Optional<Product> product = productRepo.findById(productId);
         if (product.isEmpty()) {
-            return ResponseEntity.badRequest().body("Product not found");
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Product not found");
+            return ResponseEntity.badRequest().body(errorResponse);
         }
 
         Product selectedProduct = product.get();
         Double productPrice = selectedProduct.getPPrice();
-
         if (productPrice == null) {
-            productPrice = 0.0; // Prevent null values
+            productPrice = 0.0;
         }
 
         Double totalPrice = productPrice * quantity;
@@ -68,20 +76,15 @@ public class ProductController {
         cart.setCustomer(customer.get());
         cart.setProduct(selectedProduct);
         cart.setCartQuantity(quantity);
-        cart.setCartPrice(productPrice); // Ensure price is set
-        cart.setCartTotal(totalPrice); // Ensure total price is set
-
-        // Debugging logs
-        System.out.println("----- Cart Debug Logs -----");
-        System.out.println("Product Price: " + productPrice);
-        System.out.println("Quantity: " + quantity);
-        System.out.println("Total Price: " + totalPrice);
-        System.out.println("Cart Object: " + cart);
+        cart.setCartPrice(productPrice);
+        cart.setCartTotal(totalPrice);
 
         cartRepo.save(cart);
-        return ResponseEntity.ok("Product added to cart successfully");
-    }
 
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Product added to cart successfully");
+        return ResponseEntity.ok().body(response);
+    }
 
 
 

@@ -1,1 +1,32 @@
-<p>cart works!</p>
+<div class="cart-container">
+    <h2>Your Cart</h2>
+  
+    <table *ngIf="cartItems.length > 0; else noData">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price (₹)</th>
+          <th>Total (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.productName }}</td>
+          <td>{{ item.cartQuantity }}</td>
+          <td>{{ item.cartPrice }}</td>
+          <td>{{ item.cartTotal }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #noData>
+      <p>No items in the cart.</p>
+    </ng-template>
+  
+    <div *ngIf="cartItems.length > 0" class="cart-footer">
+      <h3>Total Amount: ₹{{ totalAmount }}</h3>
+      <button (click)="placeOrder()">Make My Order</button>
+    </div>
+  </div>
+  

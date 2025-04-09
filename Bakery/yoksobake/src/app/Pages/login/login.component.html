@@ -1,1 +1,90 @@
-<p>Login works</p>
+<div class="card-container" [class.flipped]="isFlipped">
+    <div class="card-wrapper">
+  
+      <!-- Login Face -->
+      <div class="card-face card-front">
+        <h3 class="text-center mb-3">Login</h3>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="mb-3">
+            <label for="loginUsername">Username</label>
+            <input id="loginUsername" formControlName="custUsername" type="text" class="form-control"
+                   placeholder="Enter username" title="Enter your username" required />
+            <div *ngIf="loginForm.get('custUsername')?.touched && loginForm.get('custUsername')?.invalid" class="text-danger">
+              <small>Username is required.</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" formControlName="custPassword" type="password" class="form-control"
+                   placeholder="Enter password" title="Enter your password" required />
+            <div *ngIf="loginForm.get('custPassword')?.touched && loginForm.get('custPassword')?.invalid" class="text-danger">
+              <small>Password is required.</small>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+  
+        <p class="text-center mt-2">
+          Don't have an account?
+          <a href="#" (click)="toggleCard($event)">Sign Up</a>
+        </p>
+      </div>
+  
+      <!-- Signup Face -->
+      <div class="card-face card-back">
+        <h3 class="text-center mb-3">Sign Up</h3>
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+          <div class="mb-2">
+            <label for="custName">Full Name</label>
+            <input id="custName" formControlName="custName" class="form-control" placeholder="Your full name" required />
+            <div *ngIf="signupForm.get('custName')?.touched && signupForm.get('custName')?.invalid" class="text-danger">
+              <small>Name is required.</small>
+            </div>
+          </div>
+  
+          <div class="mb-2">
+            <label for="custEmail">Email</label>
+            <input id="custEmail" formControlName="custEmail" type="email" class="form-control" placeholder="you@example.com" required />
+            <div *ngIf="signupForm.get('custEmail')?.touched && signupForm.get('custEmail')?.invalid" class="text-danger">
+              <small *ngIf="signupForm.get('custEmail')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="signupForm.get('custEmail')?.errors?.['email']">Enter a valid email.</small>
+            </div>
+          </div>
+  
+          <div class="mb-2">
+            <label for="custMobile">Mobile</label>
+            <input id="custMobile" formControlName="custMobile" class="form-control" maxlength="10" minlength="10" placeholder="10-digit mobile number" required />
+            <div *ngIf="signupForm.get('custMobile')?.touched && signupForm.get('custMobile')?.invalid" class="text-danger">
+              <small>Enter a valid 10-digit mobile number.</small>
+            </div>
+          </div>
+  
+          <div class="mb-2">
+            <label for="custUsername">Username</label>
+            <input id="custUsername" formControlName="custUsername" class="form-control" placeholder="Choose a username" required />
+            <div *ngIf="signupForm.get('custUsername')?.touched && signupForm.get('custUsername')?.invalid" class="text-danger">
+              <small>Username is required.</small>
+            </div>
+          </div>
+  
+          <div class="mb-2">
+            <label for="custPassword">Password</label>
+            <input id="custPassword" formControlName="custPassword" type="password" class="form-control" placeholder="Create a password" required />
+            <div *ngIf="signupForm.get('custPassword')?.touched && signupForm.get('custPassword')?.invalid" class="text-danger">
+              <small>Password is required.</small>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-success w-100">Sign Up</button>
+        </form>
+  
+        <p class="text-center mt-2">
+          Already have an account?
+          <a href="#" (click)="toggleCard($event)">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  

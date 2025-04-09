@@ -1,1 +1,41 @@
-<p>order works!</p>
+<div class="order-wrapper">
+    <h2 class="heading">My Orders</h2>
+  
+    <div *ngIf="orders.length === 0" class="no-orders">No orders found.</div>
+  
+    <div *ngIf="orders.length > 0">
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Price (₹)</th>
+            <th>Total (₹)</th>
+            <th>Order Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.productName }}</td>
+            <td>{{ order.category }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.total }}</td>
+            <td>{{ formatDate(order.orderDate) }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="total-label">Grand Total</td>
+            <td colspan="2" class="total-value">₹{{ getGrandTotal() }}</td>
+          </tr>
+        </tfoot>
+      </table>
+  
+      <div class="done-btn-container">
+        <button class="done-btn" (click)="onDone()">Done</button>
+      </div>
+    </div>
+  </div>
+  
