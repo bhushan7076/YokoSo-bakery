@@ -36,4 +36,8 @@ public class OrderService {
 
 	        cartRepository.deleteAll(cartItems); // Remove cart items after order placement
 	    }
+	    
+	    public List<Order> getOrdersByCustomerId(Integer custId) {
+	        return orderRepository.findByCustomer_CustId(custId);
+	    }
 }

@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&family=Roboto&display=swap');
+
+.contact-container {
+   
+  color: #f5f5dc;
+  padding: 60px 30px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 3rem;
+  font-family: 'Noto Serif JP', serif;
+  margin-bottom: 10px;
+  color: #ffdab9;
+  animation: fadeInTitle 1.5s ease;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #e6d6b8;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  animation: fadeInSocials 2s ease;
+}
+
+.social-links a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.insta {
+  background-color: #d62976;
+  color: white;
+}
+
+.insta:hover {
+  background-color: #bd2165;
+  transform: scale(1.05);
+}
+
+.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.facebook:hover {
+  background-color: #2e4372;
+  transform: scale(1.05);
+}
+
+.map-section {
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeInMap 2.5s ease;
+}
+
+.map-title {
+  font-size: 2rem;
+  font-family: 'Noto Serif JP', serif;
+  margin-bottom: 20px;
+  color: #f5deb3;
+}
+
+/* Animations */
+@keyframes fadeInTitle {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInSocials {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInMap {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
